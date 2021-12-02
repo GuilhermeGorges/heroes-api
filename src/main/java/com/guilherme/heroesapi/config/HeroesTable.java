@@ -33,8 +33,8 @@ public class HeroesTable {
                 Table table = dynamoDB.createTable(tableName,
                     Arrays.asList(new KeySchemaElement("id", KeyType.HASH)),
                     Arrays.asList(new AttributeDefinition("id", ScalarAttributeType.S)),
-                    new ProvisionedThroughput(5L,5L);
-                table.waitForActive();
+                    new ProvisionedThroughput(5L,5L));
+                    table.waitForActive();
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
