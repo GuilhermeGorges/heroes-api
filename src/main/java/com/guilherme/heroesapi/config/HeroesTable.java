@@ -1,20 +1,18 @@
 package com.guilherme.heroesapi.config;
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.BasicAWSCredentials;
+
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.model.*;
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
+import static com.guilherme.heroesapi.constants.HeroesConstant.ENDPOINT_DYNAMO;
+import static com.guilherme.heroesapi.constants.HeroesConstant.HEROES_ENDPOINT_LOCAL;
+import static com.guilherme.heroesapi.constants.HeroesConstant.REGION_DYNAMO;
+
 import java.util.Arrays;
 
 @Configuration
@@ -22,7 +20,7 @@ import java.util.Arrays;
 public class HeroesTable {
     public static void main(String[] args) throws Exception{
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
-                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration())
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(ENDPOINT_DYNAMO,REGION_DYNAMO))
                 .build();
 
         DynamoDB dynamoDB = new DynamoDB(client);
