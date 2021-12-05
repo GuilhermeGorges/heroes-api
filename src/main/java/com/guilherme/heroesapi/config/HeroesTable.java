@@ -19,6 +19,7 @@ import java.util.Arrays;
 @EnableDynamoDBRepositories
 public class HeroesTable {
     public static void main(String[] args) throws Exception{
+
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(ENDPOINT_DYNAMO,REGION_DYNAMO))
                 .build();
